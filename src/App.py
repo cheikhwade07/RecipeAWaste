@@ -14,3 +14,10 @@ class FoodItem:
 
     def decrease_quantity(self):
         FoodItem.quantity -= 1
+
+
+class Fridge:
+
+    def __init__(self, name: str, price: float):
+        self.name = name
+        self.price = price
