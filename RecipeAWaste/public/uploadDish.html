@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Upload Your Dish Photo</title>
+    <title>Food/Dish Nutrition</title>
+
+    <!-- importing css formatting -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -10,7 +12,7 @@
   </head>
   <body>
     <div class="container mt-5">
-      <h1 class="text-center mb-4">Upload Your Dish Photo</h1>
+      <h1 class="text-center mb-4">Upload Your Food or Dish</h1>
 
       {% if error %}
       <div class="alert alert-danger">{{ error }}</div>
@@ -25,7 +27,7 @@
 
       {% if file_url %}
       <div class="mt-4 text-center">
-        <h4>Your Uploaded Image:</h4>
+        <h4>Uploaded Dish:</h4>
         <img src="{{ file_url }}" style="max-width: 400px" />
       </div>
       {% endif %}

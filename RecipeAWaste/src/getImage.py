@@ -8,16 +8,21 @@ import os
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 TEMPLATE_FOLDER = os.path.join(BASE_DIR, '..', 'public')
 
+
+
 app = Flask(__name__, template_folder=TEMPLATE_FOLDER)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['SECRET_KEY'] = 'buns'
 
+
+
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
+# checks allowed files and only allows photos to be uploaded for the ai to process
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
+# html sends either get or post command to this backend code.
 @app.route('/', methods=['GET', 'POST'])
 def upload_image():
     file_url = None
