@@ -14,9 +14,9 @@ async function generateRecipe() {
         if (!res.ok) {
             throw new Error(`HTTP error! status: ${res.status}`);
         }
-
         const aiText = await res.text();
-        resultDiv.innerHTML = `<pre>${aiText}</pre>`;
+        const formattedText = aiText.replace(/\\n/g, '');
+        resultDiv.innerHTML = formattedText;
 
 
     } catch (error) {

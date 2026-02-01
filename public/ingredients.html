@@ -34,14 +34,22 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Ingredient</th>
-                        <th>Weight(kg)</th>
+
+                        <thead>
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>Weight(kg)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
                     </tr>
                 </thead>
                 <tbody id="ingredient-table-body"></tbody>
             </table>        
         </section>
+
         <button onclick="generateRecipe()">Generate Recipe</button>
+        <button onclick="clearAll()" style="background-color: #a83434;">Clear All</button>
     </main>
     <script src="ingredients.js"></script>
 </body>
