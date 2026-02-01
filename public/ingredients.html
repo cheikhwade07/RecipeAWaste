@@ -12,11 +12,10 @@
     <!--    Navbar  -->
     <header class="navbar">
         <h1 class="headertitle">RecipeAWaste</h1>
-        <nav></nav>
+        <nav>
             <a href="index.html">Home</a>
             <a href="ingredients.html">Ingredients</a>
             <a href="credits.html">Credits</a>
-        </nav>
         </nav>
     </header>
     <main>
@@ -24,18 +23,19 @@
         <section class="ingredients-section">
             <h2>Ingredients</h2>
             <a>
-                <p>Add the ingredients you have in your fridge!</p>
+                <p>Add the ingredients you have in your fridge and the weight!</p>
             </a>
             <input id="ingredient" placeholder="Ingredient">
-            <input id="quantity" placeholder="Quantity">
+            <input  id="weight" placeholder="Weight (kg)" type="number" step="0.1">
             <button onclick="add()">Add</button>
+
 
             <!--    Table input for Ingredients & Quantity-->
             <table>
                 <thead>
                     <tr>
                         <th>Ingredient</th>
-                        <th>Quantity</th>
+                        <th>Weight(kg)</th>
                     </tr>
                 </thead>
                 <tbody id="ingredient-table-body"></tbody>

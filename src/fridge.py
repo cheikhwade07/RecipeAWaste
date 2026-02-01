@@ -1,8 +1,11 @@
+
+from dataclasses import dataclass
 from typing import Dict, List, Optional
 from datetime import datetime, date, timedelta
 from food_item import FoodItem
 
 
+@dataclass
 class Fridge:
 
     def __init__(self):
@@ -14,9 +17,9 @@ class Fridge:
         item_key = item.name.lower()
 
         if item_key in self._items:
-            # Item already exists, increase quantity
-            self._items[item_key].increase_quantity()
-            print(f"Increased quantity of '{item.name}' to {FoodItem.get_quantity()}")
+            # Item already exists, add to its weight
+            self._items[item_key].weight += item.weight
+            print(f"Increased weight of '{item.name}' to {self._items[item_key].weight}kg")
             return False
         else:
             # New item, add to fridge
@@ -123,17 +126,11 @@ class Fridge:
 
         return items_with_expiry + items_without_expiry
 
-    def get_sorted_by_calories(self, descending: bool = False) -> List[FoodItem]:
-
+    def get_sorted_by_weight(self, descending: bool = False) -> List[FoodItem]:
         items = self.get_all_items()
-        items.sort(key=lambda x: x.calorie, reverse=descending)
+        items.sort(key=lambda x: x.weight, reverse=descending)
         return items
 
-    def get_sorted_by_protein(self, descending: bool = True) -> List[FoodItem]:
-
-        items = self.get_all_items()
-        items.sort(key=lambda x: x.protein, reverse=descending)
-        return items
 
 
     def display_all(self) -> None:
@@ -148,7 +145,7 @@ class Fridge:
 
         for item in self.get_sorted_by_expiry():
             expiry_str = item.expiry_date.strftime("%Y-%m-%d") if item.expiry_date else "No expiry"
-            print(f"• {item.name:20} | Cal: {item.calorie:4} | Protein: {item.protein:3}g | Expires: {expiry_str}")
+            print(f"• {item.name:20} | Weight: {item.weight}kg | Expires: {expiry_str}")
 
         print(f"{'=' * 60}\n")
 
