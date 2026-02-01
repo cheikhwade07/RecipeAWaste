@@ -62,10 +62,10 @@ def add_food_item(data: dict):  # Fix: accept data parameter
     return {"message": "Added to fridge"}
 
 @app.delete("/remove_Food_Item")
-def remove_food_item(name: str)->None :
+def remove_food_item(data: dict):
+    name = data.get("name")
     fridge.remove_item(name)
-    return {"message": name +" removed to fridge"}
-
+    return {"message": f"{name} removed from fridge"}
 @app.delete("/clear_Fridge")
 def remove_food_item()->None :
     fridge.clear()
