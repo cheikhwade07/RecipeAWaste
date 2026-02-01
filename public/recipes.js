@@ -1,10 +1,10 @@
-const saved = localStorage.getItem('ingredients');
+
 const resultDiv = document.getElementById('recipe-result');
 
 
-const host=8001
-generateRecipe();
+const host=8001;
 
+ generateRecipe();
 async function generateRecipe() {
   try {
         const res = await fetch("http://localhost:"+host+"/generate", {
@@ -18,8 +18,11 @@ async function generateRecipe() {
         const aiText = await res.text();
         resultDiv.innerHTML = `<pre>${aiText}</pre>`;
 
+
     } catch (error) {
         resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
         console.error(error);
+
     }
+
 }

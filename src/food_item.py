@@ -6,9 +6,9 @@ from typing import ClassVar, Optional
 @dataclass
 class FoodItem:
     name: str
-    calorie: int
-    protein: int
+    weight: float
     expiry_date: Optional[datetime] = None
+
 
     # class variable shared by all instances
     quantity: ClassVar[int] = 0

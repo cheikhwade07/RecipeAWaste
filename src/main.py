@@ -28,8 +28,8 @@ async def generate_recipe():
 
     # Format ingredients
     ingredients_text = "\n".join([
-        f"{item.name}: Calories {item.calorie}, Protein {item.protein}g"
-        for item in ingredients
+        f"{item.name} : {item.weight}kg"
+          for item in ingredients
     ])
 
     # Call Groq API
@@ -37,7 +37,13 @@ async def generate_recipe():
         model="llama-3.3-70b-versatile",
         messages=[{
             "role": "user",
-            "content": f"Create a recipe using these ingredients:\n{ingredients_text}"
+            "content": f"""Create a recipe using these ingredients:\n{ingredients_text}:
+                    At the end, provide:
+                    - Total estimated calories
+                    - Protein content
+                    - Cooking time
+                    - Servings
+                       """
         }],
         temperature=0.7,
         max_tokens=2000,
@@ -47,11 +53,10 @@ async def generate_recipe():
 @app.post("/add_Food_Item")
 def add_food_item(data: dict):  # Fix: accept data parameter
     name = data.get("name")
-    calorie = data.get("calorie", 0)
-    protein = data.get("protein", 0)
+    weight = data.get("weight", 0)
     expiry_date = data.get("expiry_date")
 
-    foodItem = FoodItem(name, calorie, protein, expiry_date)
+    foodItem = FoodItem(name, weight, expiry_date)
     fridge.add_item(foodItem)
     return {"message": "Added to fridge"}
 
