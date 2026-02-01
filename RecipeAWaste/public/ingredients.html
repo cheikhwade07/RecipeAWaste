@@ -12,17 +12,20 @@
     <!--    Navbar  -->
     <header class="navbar">
         <h1 class="headertitle">RecipeAWaste</h1>
-        <nav>
+        <nav></nav>
+            <a href="index.html">Home</a>
             <a href="ingredients.html">Ingredients</a>
-            <a href="recipes.html">Recipes</a>
-            <a href="nutrition.html">Nutrition</a>
             <a href="credits.html">Credits</a>
+        </nav>
         </nav>
     </header>
     <main>
         <!--    Ingredients Section    -->
         <section class="ingredients-section">
-            <h2>ingredients</h2>
+            <h2>Ingredients</h2>
+            <a>
+                <p>Add the ingredients you have in your fridge!</p>
+            </a>
             <input id="ingredient" placeholder="Ingredient">
             <input id="quantity" placeholder="Quantity">
             <button onclick="add()">Add</button>
@@ -38,6 +41,7 @@
                 <tbody id="ingredient-table-body"></tbody>
             </table>        
         </section>
+        <button onclick="generateRecipe()">Generate Recipe</button>
     </main>
     <script src="ingredients.js"></script>
 </body>
