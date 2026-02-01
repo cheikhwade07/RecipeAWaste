@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RecipeAWaste</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<!--    Body    -->
+<body>
+    <!--    Navbar  -->
+    <header class="navbar">
+        <h1 class="headertitle">RecipeAWaste</h1>
+        <nav></nav>
+            <a href="index.html">Home</a>
+            <a href="ingredients.html">Ingredients</a>
+            <a href="credits.html">Credits</a>
+        </nav>
+        </nav>
+    </header>
+    <main>
+        <!--    Ingredients Section    -->
+        <section class="ingredients-section">
+            <h2>Ingredients</h2>
+            <a>
+                <p>Add the ingredients you have in your fridge!</p>
+            </a>
+            <input id="ingredient" placeholder="Ingredient">
+            <input id="quantity" placeholder="Quantity">
+            <button onclick="add()">Add</button>
+
+            <!--    Table input for Ingredients & Quantity-->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ingredient</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="ingredient-table-body"></tbody>
+            </table>        
+        </section>
+        <button onclick="generateRecipe()">Generate Recipe</button>
+    </main>
+    <script src="ingredients.js"></script>
+</body>
+</html>
+
+
+
