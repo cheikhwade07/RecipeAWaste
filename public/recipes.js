@@ -1,20 +1,25 @@
 const saved = localStorage.getItem('ingredients');
-const resultDiv = document.getElementById('result');
+const resultDiv = document.getElementById('recipe-result');
 
 
-const ingredients = saved ? JSON.parse(saved) : [];
+const host=8001
+generateRecipe();
 
-generateRecipe(ingredients);
+async function generateRecipe() {
+  try {
+        const res = await fetch("http://localhost:"+host+"/generate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" }
+        });
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
 
-async function generateRecipe(ingredients) {
-  const res = await fetch("http://localhost:8000/generate", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ingredients })
-  });
+        const aiText = await res.text();
+        resultDiv.innerHTML = `<pre>${aiText}</pre>`;
 
-  // ai starts here
-  const aiText = await res.text();
-  resultDiv.innerHTML = `<pre>${aiText}</pre>`;
-  // ai ends here
+    } catch (error) {
+        resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+        console.error(error);
+    }
 }

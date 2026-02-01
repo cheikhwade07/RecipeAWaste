@@ -1,40 +1,51 @@
-function add() {
+async function add() {
     const ingredient = document.getElementById('ingredient').value;
     const quantity = document.getElementById('quantity').value;
+    const calorie = document.getElementById('calorie').value;  // You need to add this input field to HTML
+    const protein = document.getElementById('protein').value;  // You need to add this input field to HTML
 
-    // case of empty input
     if(!ingredient || !quantity) {
-        alert("Please enter both ingredient and quantity.");
+        alert("Please enter ingredient and quantity.");
         return;
     }
+    const host= 8001
+    try {
+        const res = await fetch("http://localhost:"+host+"/add_Food_Item", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: ingredient,
+                calorie: parseInt(calorie) || 0,
+                protein: parseInt(protein) || 0,
+                expiry_date: null
+            })
+        });
 
-    document.getElementById("ingredient-table-body").innerHTML += `
-    <tr>
-      <td>${ingredient}</td>
-      <td>${quantity}</td>
-    </tr>
-    `;
+        if (!res.ok) {
+            alert("Failed to add item to fridge");
+            return;
+        }
 
-    // delete input values after adding
-    document.getElementById('ingredient').value = '';
-    document.getElementById('quantity').value = '';
-}
+        document.getElementById("ingredient-table-body").innerHTML += `
+        <tr>
+          <td>${ingredient}</td>
+          <td>${quantity}</td>
+          <td>${calorie || 0}</td>
+          <td>${protein || 0}</td>
+        </tr>
+        `;
 
-function getIngredients(){
-    const table = document.getElementById("ingredient-table-body");
-    const ingredients = [];
-    for (let row of table.rows) {
-        const ingredient = row.cells[0].innerText;
-        const quantity = row.cells[1].innerText;
-        ingredients.push({ ingredient, quantity });
+        document.getElementById('ingredient').value = '';
+        document.getElementById('quantity').value = '';
+        document.getElementById('calorie').value = '';
+        document.getElementById('protein').value = '';
+
+    } catch (error) {
+        alert("Error connecting to server");
+        console.error(error);
     }
-    return ingredients;
 }
 
 function generateRecipe(){
-    const ingredients = getIngredients();
-    
-   
-    localStorage.setItem("ingredients", JSON.stringify(ingredients));
     window.location.href = "recipes.html";
 }

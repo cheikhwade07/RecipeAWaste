@@ -4,8 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from groq import Groq
 import os
 
-from pyasn1_modules.rfc2315 import data
-
 from fridge import Fridge
 from src.food_item import FoodItem
 

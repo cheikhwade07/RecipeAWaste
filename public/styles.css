@@ -2,7 +2,7 @@
     --background: #58d15a;
     --textwhite: #ffffff;
     --textblack: #000000;
-    --button: #34a837;
+    --button: #a83434;
     --border: #2e8b2e;
 }
 
@@ -22,4 +22,18 @@
     min-height:calc(100dvh - 150px);
     display:grid; place-items:center; text-align:center; padding:48px 20px;
   }
+  #recipe-result {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.6;
+}
+
+#recipe-result pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
   
