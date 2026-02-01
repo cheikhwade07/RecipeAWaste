@@ -2,7 +2,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from datetime import datetime
-cred = credentials.Certificate("C:\\Users\\adamt\\OneDrive - Carleton University\\MastersDegreeCarleton\\Year1\\AHivers\\HackTheFuture_MSA\\firebase.json")
+cred = credentials.Certificate("firebase.json")
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
@@ -14,6 +14,7 @@ data = {
     'fat': 0,
     'expiry_date': '2023/12/31'
 }
+
 
 doc_ref = db.collection('food_items_collection').document()
 doc_ref.set(data)
