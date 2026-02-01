@@ -15,6 +15,7 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="ingredients.html">Ingredients</a>
+            <a href="http://127.0.0.1:5000">Dish Nutrition</a>
             <a href="credits.html">Credits</a>
         </nav>
     </header>
@@ -30,22 +31,17 @@
             <button onclick="add()">Add</button>
 
 
-            <!--    Table input for Ingredients & Quantity-->
-            <table>
-                <thead>
-                    <tr>
 
-                        <thead>
-                            <tr>
-                                <th>Ingredient</th>
-                                <th>Weight(kg)</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                    </tr>
-                </thead>
-                <tbody id="ingredient-table-body"></tbody>
-            </table>        
+        <table>
+            <thead>
+                <tr>
+                    <th>Ingredient</th>
+                    <th>Weight(kg)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="ingredient-table-body"></tbody>
+        </table>
         </section>
 
         <button onclick="generateRecipe()">Generate Recipe</button>
